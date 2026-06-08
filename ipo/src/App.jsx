@@ -30,12 +30,77 @@ function Inicio() {
     <div class="jumbotron">
       <h1 class="text-center">Centro de inspeções de automoveis</h1>
       <p class="text-center">IPO - ESDS1</p>
+
     </div>
-  
+
   );
 }
 function ClientesList() {
-  return (<h2>Página de Clientes</h2>);
+  return (
+    <div class="row g-3">
+      <div className="col-md-8">
+        <h2>Página de Clientes</h2>
+      </div>
+      <div className="col-md-4">
+        <button className="btn btn-secondary"><i className="fa fa-plus"></i> Novo Cliente</button>
+        <button className="btn btn-secondary"><i className="fa fa-refresh"></i> Atualizar Cliente</button>
+      </div>
+
+          
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Codigo</th>
+              <th>Nome</th>
+              <th>Morada</th>
+              <th>NIF</th>
+              <th>Funções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <button className="btn btn-dark"><i className="fa fa-eye"></i></button>
+                <button className="btn btn-dark"><i className="fa fa-pencil"></i></button>
+                <button className="btn btn-dark"><i className="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <button className="btn btn-dark"><i className="fa fa-eye"></i></button>
+                <button className="btn btn-dark"><i className="fa fa-pencil"></i></button>
+                <button className="btn btn-dark"><i className="fa fa-trash"></i></button>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td> </td>
+              <td></td>
+              <td>
+                <button className="btn btn-dark"><i className="fa fa-eye"></i></button>
+                <button className="btn btn-dark"><i className="fa fa-pencil"></i></button>
+                <button className="btn btn-dark"><i className="fa fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+
+
+
+    </div>
+
+
+  );
 }
 function VeiculosList() {
   return (<h2>Página de Veículos</h2>);
