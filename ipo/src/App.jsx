@@ -21,8 +21,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/clientes" element={<ClientesList />} />
+
+          {/* Rotas do formulário de Clientes */}
+          <Route path="/clientes/create" element={<ClienteForm modo="create" />} />
+          <Route path="/clientes/update/:id" element={<ClienteForm modo="update" />} />
+          <Route path="/clientes/read/:id" element={<ClienteForm modo="read" />} />
+
           <Route path="/veiculos" element={<VeiculosList />} />
-          <Route path="/inspecoes" element={<InspecoesList />} />
+          <Route path="/inspecoes/:matricula" element={<InspecoesList />} />
         </Routes>
       </div>
     </div>
@@ -100,7 +106,8 @@ function ClientesList() {
           <h2>Clientes</h2>
         </div>
         <div className="col-6 text-right">
-          <button className="btn btn-dark ml-3" ><i className="fa fa-plus-square" aria-hidden="true"></i> Novo Cliente</button>
+          <Link to="/clientes/create" className="btn btn-dark">
+            <i className="fa fa-plus-square"></i> Novo Cliente</Link>
           <button className="btn btn-light ml-3" onClick={fetchData}><i className="fa fa-refresh" aria-hidden="true"></i> Atualizar</button>
         </div>
       </div>
@@ -168,6 +175,73 @@ function ClientesList() {
     </>
   );
 }
+
+
+function ClienteForm() {
+  const [formData, setFormData] = useState({
+    nome: '',
+    morada: '',
+    nif: '',
+  });
+
+  const [mensagemErro, setMensagemErro] = useState('');
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const method = 'POST';
+      const url = `${API_BASE}/clientes`;
+      const response = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (data.success) {
+        navigate('/clientes');
+      } else {
+        setMensagemErro(data.message);
+      }
+    } catch {
+      setMensagemErro('Erro ao guardar o cliente');
+    }
+  };
+
+  return (
+    <div>
+      <h1>Novo Cliente</h1>
+      <form>
+        <div className="row g-3">
+          <div className="col-md-10">
+            <label>Nome:</label>
+            <input type="text" className="form-control md-8" value={formData.nome} onChange={(e) => setFormData({ ...formData, nome: e.target.value })} />
+          </div>
+        </div>
+
+        <div className="row g-3">
+          <div className="col-md-6">
+            <label>Morada:</label>
+            <input type="varchar" className="form-control" value={formData.morada} onChange={(e) => setFormData({ ...formData, morada: e.target.value })} />
+
+          </div>
+          <div className="col-md-6">
+            <label>NIF:</label>
+            <input type="varchar" className="form-control" value={formData.nif} onChange={(e) => setFormData({ ...formData, nif: e.target.value })} />
+          </div>
+        </div>
+
+        <button type="button" className="btn btn-dark mt-3" onClick={handleSubmit}>Guardar</button>
+        <Link to="/clientes" className="btn btn-secondary">Cancelar</Link>
+
+      </form>
+    </div>
+  );
+  return (<div>xx</div>);
+}
+
+
+
 function VeiculosList() {
   const [deleteId, setDeleteId] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -319,7 +393,7 @@ function InspecoesList() {
       const response = await fetch(API_BASE + '/inspecoes');
       const data = await response.json();
       if (data.success) {
-        setVeiculos(data.data);
+        setInspecoes(data.data);
       } else {
         setMensagemErro(data.message);
       }
