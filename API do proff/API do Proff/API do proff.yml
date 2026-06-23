@@ -4,7 +4,7 @@ info:
 
 http:
   method: GET
-  url: https://effective-capybara-v665669654wghp5gj-3000.app.github.dev/
+  url: https://turbo-zebra-wrr4rrpr4wjrhg749-3000.app.github.dev/
   auth: inherit
 
 settings:

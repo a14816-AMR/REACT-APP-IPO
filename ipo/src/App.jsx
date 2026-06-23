@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Routes, Route, Link } from 'react-router-dom';
 
-const API_BASE = 'https://effective-capybara-v665669654wghp5gj-3000.app.github.dev';
+const API_BASE = 'https://turbo-zebra-wrr4rrpr4wjrhg749-3000.app.github.dev';
 
 function App() {
   return (
