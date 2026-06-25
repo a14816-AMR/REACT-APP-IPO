@@ -1,10 +1,10 @@
 info:
-  name: API do proff
+  name: Api do prof
   type: http
 
 http:
   method: GET
-  url: https://turbo-zebra-wrr4rrpr4wjrhg749-3000.app.github.dev/
+  url: https://reimagined-tribble-4jjrjj5jrxw7357j6-3000.app.github.dev/
   auth: inherit
 
 settings:
@@ -12,4 +12,3 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
-​
